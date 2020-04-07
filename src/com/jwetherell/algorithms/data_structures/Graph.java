@@ -18,7 +18,7 @@ import java.util.List;
  * @author Justin Wetherell <phishman3579@gmail.com>
  */
 @SuppressWarnings("unchecked")
-public class Graph<T extends Comparable<T>> {
+public class Graph<T extends Comparable<T>> implements Serializable {
 
 	private List<Vertex<T>> allVertices = new ArrayList<Vertex<T>>();
 	private List<Edge<T>> allEdges = new ArrayList<Edge<T>>();

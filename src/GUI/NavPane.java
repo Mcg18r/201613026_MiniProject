@@ -24,9 +24,11 @@ public class NavPane extends GridPane
 
 	//BUTTONS USED FOR THE INTERFACE
 	private Button btnView;
-	private Button btnViewVertex;
-	private Button btnViewEdge;
-	private Button btnViewBuilding;
+	private Button btnVertex;
+	private Button btnEdge;
+	private Button btnBuilding;
+	private Button btnGraph;
+	
 	
 	private VBox gridBox= new VBox ();;
 	
@@ -43,12 +45,19 @@ public class NavPane extends GridPane
 		btnView.setOnAction(e->{
 			
 			gridBox.getChildren().clear();
-			ViewPane movPane = new ViewPane (window);
+			ViewPane movPane = new ViewPane ();
+			gridBox.getChildren().add(movPane);
+		});
+		
+		btnGraph.setOnAction(e->{
+			
+			gridBox.getChildren().clear();
+			GraphPane movPane = new GraphPane();
 			gridBox.getChildren().add(movPane);
 		});
 		
 		//shows the list of vertices in the graph
-		btnViewVertex.setOnAction(e->{
+		btnVertex.setOnAction(e->{
 			
 			gridBox.getChildren().clear();
 			VertexPane movPane = new VertexPane ();
@@ -56,14 +65,14 @@ public class NavPane extends GridPane
 		});
 		
 		//shows the list of edges in a graph
-		btnViewEdge.setOnAction(e->{
+		btnEdge.setOnAction(e->{
 			
 			gridBox.getChildren().clear();
 			EdgePane movPane = new EdgePane ();
 			gridBox.getChildren().add(movPane);
 		});
 		
-		btnViewBuilding.setOnAction(e->{
+		btnBuilding.setOnAction(e->{
 			
 			gridBox.getChildren().clear();
 			BuildingPane movPane = new BuildingPane ();
@@ -75,12 +84,13 @@ public class NavPane extends GridPane
 	{
 		button btn = new button();
 		btnView = btn.btnSet(btnView,"VIEW","View all in graph");
-		btnViewVertex = btn.btnSet(btnViewVertex,"VIEW VERTICES","View the vertices in graph");
-		btnViewEdge = btn.btnSet(btnViewEdge,"VIEW EDGE'S","View the edge's in graph");
-		btnViewBuilding = btn.btnSet(btnViewBuilding,"VIEW BUILDING'S","View the buildings");
-
+		btnVertex = btn.btnSet(btnVertex,"VIEW VERTICES","View the vertices in graph");
+		btnEdge = btn.btnSet(btnEdge,"VIEW EDGE'S","View the edge's in graph");
+		btnBuilding = btn.btnSet(btnBuilding,"VIEW BUILDING'S","View the buildings");
+		btnGraph = btn.btnSet(btnGraph,"VIEW GRAPH","View the graphs");
+		
 		VBox btnBox = new VBox ();
-		btnBox.getChildren().addAll(btnView, btnViewVertex, btnViewEdge,btnViewBuilding);
+		btnBox.getChildren().addAll(btnView, btnVertex, btnEdge,btnBuilding, btnGraph);
 		gridBox.setAlignment(Pos.BOTTOM_CENTER);
 		
 		setHgap(10);

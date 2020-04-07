@@ -210,9 +210,22 @@ public class IOHandling {
 	 */
 	public static void writeVertexToFile(Vertex<Building> vertex)
 	{
-		ArrayList<Vertex<Building>> build= readVertex();
+		ArrayList<Vertex<Building>> ver= readVertex();
 		
 		boolean con=true;
+		
+		if(ver.size()>=1)
+		{
+			
+			for(Vertex<Building> b:ver)
+			{
+				if(b.equals(vertex))
+				{
+					System.out.println("Vertex already exists");
+					con = false;
+				}
+			}
+		}
 		if(con!=false)
 		{
 			File f = new File("data/Vertex.dat");
@@ -222,9 +235,9 @@ public class IOHandling {
 				fos = new FileOutputStream(f);
 				oos = new ObjectOutputStream(fos);
 				
-				build.add(vertex);
+				ver.add(vertex);
 				
-				for (Vertex<Building> b:build)
+				for (Vertex<Building> b:ver)
 				{
 						oos.writeObject(b);
 						
@@ -320,9 +333,21 @@ public class IOHandling {
 	 */
 	public static void writeEdgeToFile(Edge<Building> edge) 
 	{
-		ArrayList<Edge<Building>> build= readEdge();
+		ArrayList<Edge<Building>> ed= readEdge();
 		
 		boolean con=true;
+		if(ed.size()>=1)
+		{
+			
+			for(Edge<Building> b:ed)
+			{
+				if(b.equals(edge))
+				{
+					System.out.println("Edge already exists");
+					con = false;
+				}
+			}
+		}
 		if(con!=false)
 		{
 			File f = new File("data/Edge.dat");
@@ -332,9 +357,9 @@ public class IOHandling {
 				fos = new FileOutputStream(f);
 				oos = new ObjectOutputStream(fos);
 				
-				build.add(edge);
+				ed.add(edge);
 				
-				for (Edge<Building> b: build)
+				for (Edge<Building> b: ed)
 				{
 						oos.writeObject(b);
 						
@@ -426,7 +451,7 @@ public class IOHandling {
 	 * Will write a graph into a file by appending file
 	 * @param graph
 	 */
-	public static void wwriteGraphToFile(Graph<Building> graph) 
+	public static void writeGraphToFile(Graph<Building> graph) 
 	{
 		ArrayList<Graph<Building>> build= readGraph();
 		

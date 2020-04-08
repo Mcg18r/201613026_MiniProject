@@ -54,6 +54,8 @@ public class Main extends Application
 
 	public void setUp ()
 	{
+		 @SuppressWarnings("rawtypes")
+		Graph g = new Graph(); 
 		/*--------------------CREATION OF BUILDINGS---------------------------------*/
 		SolarBuilding sb = new SolarBuilding ();
 		sb.setXPosition(320);
@@ -102,6 +104,7 @@ public class Main extends Application
 		//IOHandling.writeVertex(v1); 						add the vertex to file after the edge creation else it adds without the edge
 		Vertex<Building> v4 = new Vertex<Building>(sb3,200);
 		//IOHandling.writeVertexToFile(v2);					add the vertex to file after the edge creation else it adds without the edge
+		//Graph.addVertices(v0,v1,60,120);
 		/*------------------------------------------------------------------------*/
 		
 		/*--------------------CREATION OF EDGES-----------------------------------*/
